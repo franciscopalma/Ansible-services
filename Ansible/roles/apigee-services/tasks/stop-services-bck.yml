@@ -1,0 +1,70 @@
+#stop-services
+
+- name: Stop Management Server service 1
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-management-server stop
+  when: inventory_hostname in groups['dev-open-man-edge']
+  tags: stop
+
+- name: Stop Message Processor service 2
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-message-processor stop
+  when: inventory_hostname in groups['dev-router-msg']
+  tags: stop
+
+- name: Stop Postgres service 3
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-postgres-server stop
+  when: inventory_hostname in groups['dev-router-msg']
+  tags: stop
+
+- name: Stop QIPD Server service 4
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-qpid-server stop
+  when: inventory_hostname in groups['dev-post-qipd']
+  tags: stop
+
+- name: Stop Router service 5
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-router stop
+  when: inventory_hostname in groups['dev-router-msg']
+  tags: stop
+
+- name: Stop Edge UI service 6
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-management-ui stop
+  when: inventory_hostname in groups['dev-open-man-edge']
+  tags: stop
+
+- name: Stop Cassandra service 7
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-cassandra stop
+  when: inventory_hostname in groups['dev-zookeper-cassandra']
+  tags: stop
+
+- name: Stop OpenLDAP service 8
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-openldap stop
+  when: inventory_hostname in groups['dev-open-man-edge']
+  tags: stop
+
+- name: Stop Portal Database service 9
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-postgresql stop
+  when: inventory_hostname in groups['dev-portaldb']
+  tags: stop
+
+- name: Stop QPID service 10
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-qpidd stop
+  when: inventory_hostname in groups['dev-post-qipd']
+  tags: stop
+
+- name: Stop Zookeper service 11
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-zookeeper stop
+  when: inventory_hostname in groups['dev-zookeper-cassandra']
+  tags: stop
+
+- name: Stop Portal service 12
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-drupal-devportal stop
+  when: inventory_hostname in groups['dev-portal-lb']
+  tags: stop
+
+- name: Stop Portal LoadBalance service 13
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-lb stop
+  when: inventory_hostname in groups['dev-portal-lb']
+  tags: stop
+
+
+
+
