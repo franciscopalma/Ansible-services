@@ -1,3 +1,20 @@
-- name: Start AEM service 
-  command: /opt/aem/author-p8080/startAEM.sh 
+- name: Start Author AEM service
+  ansible.builtin.systemd:
+    state: started
+    name: aem-author-p8080.service
+  when: inventory_hostname in groups['aem-dev-author']
+  tags: start
+
+- name: Start Publish AEM service
+  ansible.builtin.systemd:
+    state: started
+    name: aem-publish-p8080.service
+  when: inventory_hostname in groups['aem-dev-publish']
+  tags: start
+
+- name: Start Httpd AEM service
+  ansible.builtin.systemd:
+    state: started
+    name: httpd.service
+  when: inventory_hostname in groups['aem-dev-publish']
   tags: start
