@@ -12,6 +12,11 @@
   when: inventory_hostname in groups['aem-dev-publish']
   tags: stop
 
-  aem-publish-p8080.service
+- name: Stop Httpd AEM service
+  ansible.builtin.systemd:
+    state: stopped
+    name: httpd.service
+  when: inventory_hostname in groups['aem-dev-publish']
+  tags: stop
 
-  httpd.service
+ 
