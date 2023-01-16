@@ -1,0 +1,7 @@
+#start&stop-ignite-services.yml
+
+---
+  - hosts: ignite-dev-servers
+    become: true
+    roles:
+      - ignite-services

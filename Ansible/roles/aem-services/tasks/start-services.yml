@@ -1,0 +1,3 @@
+- name: Start AEM service 
+  command: /opt/aem/author-p8080/startAEM.sh 
+  tags: start

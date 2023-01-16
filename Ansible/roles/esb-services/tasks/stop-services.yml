@@ -1,0 +1,3 @@
+- name: Stop Oracle Database
+
+/opt/grid/19.3.0/bin/crsctl start has

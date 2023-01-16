@@ -1,0 +1,119 @@
+#hosts
+
+[all:children]
+kafka-dev-services
+apigee-dev-servers
+ignite-dev-hosts
+aem-dev-hosts
+esb-dev-hosts
+
+#KAFKA
+
+[kafka-dev-servers:children]
+dev-connect-ksql
+dev-registry
+dev-rest
+dev-control-center
+dev-zookeper
+
+[dev-connect-ksql]
+scdvlcfs80.stc.com.sa ansible_host=10.27.132.194
+
+[dev-registry]
+scdvlcfs81.stc.com.sa ansible_host=10.27.132.196
+
+[dev-rest]
+scdvlcfs82.stc.com.sa ansible_host=10.27.132.198
+
+[dev-control-center]
+scdvlcfs83.stc.com.sa ansible_host=10.27.132.200
+
+[dev-zookeper]
+scdvlcfs84.stc.com.sa ansible_host=10.27.132.202
+scdvlcfs85.stc.com.sa ansible_host=10.27.132.203
+scdvlcfs86.stc.com.sa ansible_host=10.27.132.204
+
+# APIGEE
+
+[apigee-dev-servers:children]
+dev-zookeper-cassandra
+dev-open-man-edge
+dev-router-msg
+dev-post-qipd
+dev-portal-lb
+dev-portaldb
+
+[dev-zookeper-cassandra]
+SCDvLMCD29.stc.com.sa ansible_host=10.21.203.150
+SCDvLMCD30.stc.com.sa ansible_host=10.21.203.151
+SCDvLMCD31.stc.com.sa ansible_host=10.21.203.152
+
+[dev-open-man-edge]
+SCDvLMCD29.stc.com.sa ansible_host=10.21.203.150
+
+[dev-router-msg]
+SCDvLMCD30.stc.com.sa ansible_host=10.21.203.151
+SCDvLMCD31.stc.com.sa ansible_host=10.21.203.152
+
+[dev-post-qipd]
+DBDvLCFS09.stc.com.sa ansible_host=10.27.132.183
+DBDvLCFS10.stc.com.sa ansible_host=10.27.132.184
+
+[dev-portal-lb]
+SCDvLMCD32.stc.com.sa ansible_host=10.21.203.153
+
+[dev-portaldb]
+SCDvLMCD33.stc.com.sa ansible_host=10.21.203.154
+DBDvLCFS09.stc.com.sa ansible_host=10.27.132.183
+DBDvLCFS10.stc.com.sa ansible_host=10.27.132.184
+
+
+#IGNITE
+
+[ignite-dev-hosts]
+scdvlcfs87.stc.com.sa ansible_host=10.27.132.206
+scdvlcfs88.stc.com.sa ansible_host=10.27.132.207
+scdvlcfs89.stc.com.sa ansible_host=10.27.132.208
+
+#AEM
+
+[aem-dev-hosts:children]
+aem-dev-author
+aem-dev-publish
+aem-dev-httpd
+
+[aem-dev-author]
+SCDvLMCD26.stc.com.sa ansible_host=10.27.132.251
+
+[aem-dev-publish]
+SCDvLMCD27.stc.com.sa ansible_host=10.27.132.253
+
+[aem-dev-httpd]
+SCDvLMCD28.stc.com.sa ansible_host=10.21.203.158
+
+
+#ESB
+
+[esb-dev-hosts:children]
+esb-database
+esb-terracota-is
+esb-mws
+esb-ums
+
+[esb-database]
+10.27.132.186 ansible_host=10.27.132.186
+
+[esb-terracota-is]
+scdvlcfs90.stc.com.sa ansible_host=10.27.132.211
+scdvlcfs91.stc.com.sa ansible_host=10.27.132.212
+scdvlcfs93.stc.com.sa ansible_host=10.27.132.216
+scdvlcfs94.stc.com.sa ansible_host=10.27.132.217
+
+[esb-mws]
+scdvljwt28.stc.com.sa ansible_host=10.27.132.37
+scdvljwt50.stc.com.sa ansible_host=10.27.132.38
+
+[esb-ums]
+scdvlcfs96.stc.com.sa ansible_host=10.27.132.221
+scdvlcfs97.stc.com.sa ansible_host=10.27.132.222
+

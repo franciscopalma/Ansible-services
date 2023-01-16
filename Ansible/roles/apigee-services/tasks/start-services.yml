@@ -1,0 +1,65 @@
+
+- name: Start Cassandra service 
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-cassandra start
+  when: inventory_hostname in groups['dev-zookeper-cassandra']
+  tags: start
+
+- name: Start OpenLDAP service
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-openldap start
+  when: inventory_hostname in groups['dev-open-man-edge']
+  tags: start
+
+- name: Start Portal Database service
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-postgresql start
+  when: inventory_hostname in groups['dev-portaldb']
+  tags: start
+
+- name: Start QPID service 
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-qpidd start
+  when: inventory_hostname in groups['dev-post-qipd']
+  tags: start
+
+- name: Start Zookeper service
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-zookeeper start
+  when: inventory_hostname in groups['dev-zookeper-cassandra']
+  tags: start
+
+- name: Start Management Server service
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-management-server start
+  when: inventory_hostname in groups['dev-open-man-edge']
+  tags: start
+
+- name: Start Message Processor service
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-message-processor start
+  when: inventory_hostname in groups['dev-router-msg']
+  tags: start
+
+- name: Start Postgres service
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-postgres-server start
+  when: inventory_hostname in groups['dev-router-msg']
+  tags: start
+
+- name: Start QIPD Server service
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-qpid-server start
+  when: inventory_hostname in groups['dev-post-qipd']
+  tags: start
+
+- name: Start Router service 
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-router start
+  when: inventory_hostname in groups['dev-router-msg']
+  tags: start
+
+- name: Start Edge UI service 
+  command: /opt/apigee/apigee-service/bin/apigee-service edge-management-ui start
+  when: inventory_hostname in groups['dev-open-man-edge']
+  tags: start
+
+- name: Start Portal service
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-drupal-devportal start
+  when: inventory_hostname in groups['dev-portal-lb']
+  tags: start
+
+- name: Start Portal LoadBalance service
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-lb start
+  when: inventory_hostname in groups['dev-portal-lb']
+  tags: start

@@ -1,0 +1,51 @@
+
+- name: Start Zookeper service
+  ansible.builtin.systemd:
+    state: started
+    name: confluent-zookeeper.service
+  when: inventory_hostname in groups['dev-zookeper']
+  tags: start
+
+- name: Start Message Brokers service
+  ansible.builtin.systemd:
+    state: started
+    name: confluent-server.service
+  when: inventory_hostname in groups['dev-zookeper']
+  tags: start
+
+- name: Start Registry service
+  ansible.builtin.systemd:
+    state: started
+    name: confluent-schema-registry.service
+  when: inventory_hostname in groups['dev-registry']
+  tags: start
+
+- name: Start KSQL service
+  ansible.builtin.systemd:
+    state: started
+    name: confluent-ksqldb.service
+  when: inventory_hostname in groups['dev-connect-ksql']
+  tags: start
+
+
+- name: Start REST service
+  ansible.builtin.systemd:
+    state: started
+    name: confluent-kafka-rest.service
+  when: inventory_hostname in groups['dev-rest']
+  tags: start
+
+- name: Start Connect service
+  ansible.builtin.systemd:
+    state: started
+    name: confluent-kafka-connect.service
+  when: inventory_hostname in groups['dev-connect-ksql']
+  tags: start
+
+
+- name: Start Control Center service
+  ansible.builtin.systemd:
+    state: started
+    name: confluent-control-center.service
+  when: inventory_hostname in groups['dev-control-center']
+  tags: start
