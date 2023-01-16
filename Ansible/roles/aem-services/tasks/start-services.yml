@@ -16,5 +16,5 @@
   ansible.builtin.systemd:
     state: started
     name: httpd.service
-  when: inventory_hostname in groups['aem-dev-publish']
+  when: inventory_hostname in groups['aem-dev-httpd']
   tags: start

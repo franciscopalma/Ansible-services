@@ -16,7 +16,7 @@
   ansible.builtin.systemd:
     state: stopped
     name: httpd.service
-  when: inventory_hostname in groups['aem-dev-publish']
+  when: inventory_hostname in groups['aem-dev-httpd']
   tags: stop
 
  
