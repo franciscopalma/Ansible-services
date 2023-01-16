@@ -51,7 +51,7 @@
   ansible.builtin.systemd:
     state: started
     name: edge-postgres-server.service
-  when: inventory_hostname in groups['dev-router-msg']
+  when: inventory_hostname in groups['dev-post-qipd']
   tags: start
 
 - name: Start QIPD Server service
