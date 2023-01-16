@@ -17,7 +17,7 @@
   ansible.builtin.systemd:
     state: stopped
     name: edge-postgres-server.service
-  when: inventory_hostname in groups['dev-router-msg']
+  when: inventory_hostname in groups['dev-post-qipd']
   tags: stop 
 
 - name: Stop QIPD Server service
@@ -37,7 +37,7 @@
 - name: Stop Edge UI service
   ansible.builtin.systemd:
     state: stopped
-    name: edge-management-ui.service
+    name: edge-ui.service
   when: inventory_hostname in groups['dev-open-man-edge']
   tags: stop
 
