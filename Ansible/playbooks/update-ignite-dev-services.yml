@@ -4,4 +4,4 @@
   - hosts: ignite-dev-servers
     become: true
     roles:
-      - ignite-services
+      - ../roles/ignite-services

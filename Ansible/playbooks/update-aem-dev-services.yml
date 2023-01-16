@@ -1,7 +1,7 @@
 #start&stop-aem-services.yml
 
 ---
-  - hosts: aem-dev-servers
-    become: true
-    roles:
-      - aem-services
+ - hosts: aem-dev-servers
+  become: true
+  roles:
+     - ../roles/aem-services

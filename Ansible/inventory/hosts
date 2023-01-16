@@ -1,7 +1,7 @@
 #hosts
 
 [all:children]
-kafka-dev-services
+kafka-dev-servers
 apigee-dev-servers
 ignite-dev-hosts
 aem-dev-hosts

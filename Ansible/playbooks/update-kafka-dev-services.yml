@@ -4,6 +4,6 @@
   - hosts: kafka-dev-servers
     become: true
     roles:
-      - kafka-services
+      - ../roles/kafka-services
 
   
