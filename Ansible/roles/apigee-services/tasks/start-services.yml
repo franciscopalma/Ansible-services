@@ -76,7 +76,7 @@
   tags: start
 
 - name: Start Portal service 
-  command: /opt/apigee/apigee-service/bin/apigee-service apigee-drupal-devportal stop
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-drupal-devportal start
   when: inventory_hostname in groups['dev-portal-lb']
   tags: start
 
