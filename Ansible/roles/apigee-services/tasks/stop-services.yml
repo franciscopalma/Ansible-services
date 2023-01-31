@@ -76,12 +76,10 @@
   when: inventory_hostname in groups['dev-zookeper-cassandra']
   tags: stop
 
-#- name: Stop Portal service 
-#  ansible.builtin.systemd:
-#    state: stopped
-#    name: apigee-drupal-devportal.service
-#  when: inventory_hostname in groups['dev-portal-lb']
-#  tags: stop
+- name: Stop Portal service 
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-drupal-devportal stop
+  when: inventory_hostname in groups['dev-portal-lb']
+  tags: stop
 
 - name: Stop Portal LoadBalance service
   ansible.builtin.systemd:
