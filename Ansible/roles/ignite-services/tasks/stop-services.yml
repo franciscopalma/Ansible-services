@@ -1,5 +1,5 @@
 - name: Stop Ignite service
   ansible.builtin.systemd:
-    state: stoped
+    state: stopped
     name: ignite.service
   tags: stop
