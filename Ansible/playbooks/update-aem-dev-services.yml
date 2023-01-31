@@ -2,6 +2,6 @@
 
 ---
  - hosts: aem-dev-servers
-  become: true
-  roles:
-     - ../roles/aem-services
+   become: true
+   roles:
+    - ../roles/aem-services
