@@ -75,12 +75,12 @@
   when: inventory_hostname in groups['dev-open-man-edge']
   tags: start
 
-- name: Start Portal service 
-  ansible.builtin.systemd:
-    state: started
-    name: apigee-drupal-devportal.service
-  when: inventory_hostname in groups['dev-portal-lb']
-  tags: start
+#- name: Start Portal service 
+#  ansible.builtin.systemd:
+#    state: started
+#    name: apigee-drupal-devportal.service
+#  when: inventory_hostname in groups['dev-portal-lb']
+#  tags: start
 
 - name: Start Portal LoadBalance service 
   ansible.builtin.systemd:
