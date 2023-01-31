@@ -71,7 +71,7 @@
 - name: Start Edge UI service  
   ansible.builtin.systemd:
     state: started
-    name: edge-management-ui.service
+    name: edge-ui.service
   when: inventory_hostname in groups['dev-open-man-edge']
   tags: start
 
