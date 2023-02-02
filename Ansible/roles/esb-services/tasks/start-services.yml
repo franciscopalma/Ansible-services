@@ -1,4 +1,37 @@
-- name: Start Oracle Database
-  command: 
-  when:
-  tags:
+- name: Stop Oracle Database
+  command: /opt/grid/19.3.0/bin/crsctl start has
+  when: inventory_hostname in groups['esb-database']
+  tags: stop
+
+- name: Stop Universal Messaging Server
+  ansible.builtin.systemd:
+    state: stopped
+    name: um.service
+  when: inventory_hostname in groups['esb-ums']
+  tags: stop
+
+- name: Stop Terracotta
+  ansible.builtin.systemd:
+    state: stopped
+    name: terracotta.service
+  when: inventory_hostname in groups['esb-terracota-is']
+  tags: stop
+
+- name: Stop Integration Server
+  ansible.builtin.systemd:
+    state: stopped
+    name: is.service
+  when: inventory_hostname in groups['esb-terracota-is']
+  tags: stop
+
+- name: Stop My Webmethods Server
+  ansible.builtin.systemd:
+    state: stopped
+    name: mws.service
+  when: inventory_hostname in groups['esb-mws']
+  tags: stop
+
+
+
+
+
