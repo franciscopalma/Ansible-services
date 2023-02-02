@@ -1,0 +1,7 @@
+#start&stop-esb-services.yml
+
+---
+ - hosts: esb-dev-hosts
+   become: true
+   roles:
+    - ../roles/esb-services
