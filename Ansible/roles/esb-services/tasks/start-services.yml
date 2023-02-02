@@ -1,13 +1,14 @@
-#- name: Start Oracle Database
-#  command: /opt/grid/19.3.0/bin/crsctl start has
-#  when: inventory_hostname in groups['esb-database']
-#  tags: stop
-- name: Start ASM DB
-  ansible.builtin.systemd:
-    state: started
-    name: oracleasm.service
+- name: Start Oracle Database
+  command: /opt/grid/19.3.0/bin/crsctl start asm
   when: inventory_hostname in groups['esb-database']
   tags: start
+
+#- name: Start ASM DB
+#  ansible.builtin.systemd:
+#    state: started
+#    name: oracleasm.service
+#  when: inventory_hostname in groups['esb-database']
+#  tags: start
 
 - name: Start TFA DB
   ansible.builtin.systemd:
