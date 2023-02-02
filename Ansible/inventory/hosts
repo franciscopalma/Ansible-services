@@ -110,8 +110,8 @@ scdvlcfs93.stc.com.sa ansible_host=10.27.132.216
 scdvlcfs94.stc.com.sa ansible_host=10.27.132.217
 
 [esb-mws]
-scdvljwt28.stc.com.sa ansible_host=10.27.132.214
-scdvljwt50.stc.com.sa ansible_host=10.27.132.219
+scdvlcfs92.stc.com.sa ansible_host=10.27.132.214
+scdvlcfs95.stc.com.sa ansible_host=10.27.132.219
 
 [esb-ums]
 scdvlcfs96.stc.com.sa ansible_host=10.27.132.221
