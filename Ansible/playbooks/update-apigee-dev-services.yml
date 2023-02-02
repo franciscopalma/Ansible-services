@@ -1,7 +1,0 @@
-#start&stop-apigee-services.yml
-
----
- - hosts: apigee-dev-servers
-   become: true
-   roles:
-    - ../roles/apigee-services

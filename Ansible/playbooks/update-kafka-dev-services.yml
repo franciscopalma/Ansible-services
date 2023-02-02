@@ -1,9 +1,0 @@
-#start&stop-kafka-services.yml
-
----
-  - hosts: kafka-dev-servers
-    become: true
-    roles:
-      - ../roles/kafka-services
-
-  

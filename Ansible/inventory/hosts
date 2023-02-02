@@ -1,11 +1,15 @@
 #hosts
 
+
 [all:children]
 kafka-dev-servers
 apigee-dev-servers
 ignite-dev-hosts
 aem-dev-hosts
 esb-dev-hosts
+
+
+############### DEV ###################
 
 #KAFKA
 
@@ -95,25 +99,50 @@ SCDvLMCD28.stc.com.sa ansible_host=10.21.203.158
 #ESB
 
 [esb-dev-hosts:children]
-esb-database
-esb-terracota-is
-esb-mws
-esb-ums
+esb-dev-database
+esb-dev-terracota-is
+esb-dev-mws
+esb-dev-ums
 
-[esb-database]
+[esb-dev-database]
 10.27.132.186 ansible_host=10.27.132.186
 
-[esb-terracota-is]
+[esb-dev-terracota-is]
 scdvlcfs90.stc.com.sa ansible_host=10.27.132.211
 scdvlcfs91.stc.com.sa ansible_host=10.27.132.212
 scdvlcfs93.stc.com.sa ansible_host=10.27.132.216
 scdvlcfs94.stc.com.sa ansible_host=10.27.132.217
 
-[esb-mws]
+[esb-dev-mws]
 scdvlcfs92.stc.com.sa ansible_host=10.27.132.214
 scdvlcfs95.stc.com.sa ansible_host=10.27.132.219
 
-[esb-ums]
+[esb-dev-ums]
 scdvlcfs96.stc.com.sa ansible_host=10.27.132.221
 scdvlcfs97.stc.com.sa ansible_host=10.27.132.222
+
+
+############### SIT ###################
+
+#ESB
+
+[esb-sit-database]
+dbdvlcfs01.stc.com.sa ansible_host=10.27.132.125
+
+[esb-sit-terracota-is]
+scdvlcfs50.stc.com.sa ansible_host=10.27.132.133
+scdvlcfs51.stc.com.sa ansible_host=10.27.132.134
+scdvlcfs53.stc.com.sa ansible_host=10.27.132.139
+scdvlcfs54.stc.com.sa ansible_host=10.27.132.140
+
+[esb-sit-mws]
+scdvlcfs52.stc.com.sa ansible_host=10.27.132.136
+scdvlcfs55.stc.com.sa ansible_host=10.27.132.137
+
+[esb-sit-ums]
+scdvlcfs55.stc.com.sa ansible_host=10.27.132.137
+scdvlcfs56.stc.com.sa ansible_host=10.27.132.142
+scdvlcfs57.stc.com.sa ansible_host=10.27.132.143
+
+
 

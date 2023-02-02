@@ -3,14 +3,14 @@
     state: stopped
     name: aem-author-p8080.service
   when: inventory_hostname in groups['aem-dev-author']
-  tags: stop
+  tags: [stop, dev]
 
 - name: Stop Publish AEM service
   ansible.builtin.systemd:
     state: stopped
     name: aem-publish-p8080.service
   when: inventory_hostname in groups['aem-dev-publish']
-  tags: stop
+  tags: stop, dev
 
 - name: Stop Httpd AEM service
   ansible.builtin.systemd:
