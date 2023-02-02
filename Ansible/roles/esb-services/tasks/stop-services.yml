@@ -26,7 +26,28 @@
   when: inventory_hostname in groups['esb-ums']
   tags: stop
 
-- name: Stop Oracle Database
-  command: /opt/grid/19.3.0/bin/crsctl start has
+#- name: Stop Oracle Database
+#  command: /opt/grid/19.3.0/bin/crsctl start has
+#  when: inventory_hostname in groups['esb-database']
+#  tags: stop
+
+- name: Stop TFA DB
+  ansible.builtin.systemd:
+    state: stopped
+    name: oracle-tfa.service
+  when: inventory_hostname in groups['esb-database']
+  tags: stop
+
+- name: Stop OHASD DB
+  ansible.builtin.systemd:
+    state: stopped
+    name: oracle-ohasd.service
+  when: inventory_hostname in groups['esb-database']
+  tags: stop
+
+- name: Stop ASM DB
+  ansible.builtin.systemd:
+    state: stopped
+    name: oracleasm.service
   when: inventory_hostname in groups['esb-database']
   tags: stop
