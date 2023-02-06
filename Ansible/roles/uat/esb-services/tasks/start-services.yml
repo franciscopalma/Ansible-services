@@ -4,7 +4,7 @@
   tags: start
 
 - name: Start Oracle Database WEBMDDB1
-  command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl start database -d webmddb1
+  command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl start database -d WEBMUDB1
   when: inventory_hostname in groups['esb-uat-database']
   tags: start
 

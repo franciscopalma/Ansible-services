@@ -27,7 +27,7 @@
   tags: stop
 
 - name: Stop Oracle Database WEBMDDB1
-  command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl stop database -d webmddb1
+  command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl stop database -d WEBMUDB1
   when: inventory_hostname in groups['esb-uat-database']
   tags: stop
 
