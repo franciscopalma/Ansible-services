@@ -1,3 +1,12 @@
+- name: Getting process IDs of the process
+  community.general.pids:
+    name: asm_pmon_+ASM1
+  register: pids_of_python
+
+- name: Printing the process IDs obtained
+  ansible.builtin.debug:
+    msg: "PIDS of python:{{pids_of_python.pids|join(',')}}"
+
 - name: Start Oracle Database ASM
   ignore_errors: true
   command: sudo /opt/grid/19.3.0/bin/crsctl start crs -wait
