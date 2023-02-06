@@ -1,5 +1,5 @@
 - name: Check if there are any database process running
-  command: ps -ef | grep -i 'asm_pmon_+ASM1' | awk '{print $8}'
+  shell: /opt/grid/19.3.0/bin/crsctl status res | grep -wns asm -A 1
   when: inventory_hostname in groups['esb-uat-database']
   register: databasename
   tags: start
@@ -7,7 +7,7 @@
 - name: debug 
   ansible.builtin.debug:
     msg: "process running"
-  when: databasename is search("asm_pmon_+ASM1")
+  when: ('"asm_pmon_+ASM1" not in databasename')
 
 - name: Start Oracle Database ASM
   ignore_errors: true
