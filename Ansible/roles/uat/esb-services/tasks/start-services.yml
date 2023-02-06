@@ -1,9 +1,10 @@
-- name: Getting process IDs of the process
-  community.general.pids:
-    name: asm_pmon_+ASM1
-  register: pids_of_python
+- name: Check if there are any database process running
+  command: ps -ef | grep -i 'asm_pmon_+ASM1' | awk '{print $8}'
+  when: inventory_hostname in groups['esb-uat-database']
+  register: database-name
+  tags: start
 
-- name: Printing the process IDs obtained
+- name: debug 
   ansible.builtin.debug:
     msg: "PIDS of python:{{pids_of_python.pids|join(',')}}"
 
