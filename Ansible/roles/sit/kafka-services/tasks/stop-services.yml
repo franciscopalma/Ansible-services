@@ -1,0 +1,50 @@
+- name: Stop Zookeper service
+  ansible.builtin.systemd:
+    state: stopped
+    name: confluent-zookeeper.service
+  when: inventory_hostname in groups['kafka-sit-zookeper']
+  tags: stop
+
+- name: Stop Message Brokers service
+  ansible.builtin.systemd:
+    state: stopped
+    name: confluent-server.service
+  when: inventory_hostname in groups['kafka-sit-zookeper']
+  tags: stop
+
+- name: Stop Registry service
+  ansible.builtin.systemd:
+    state: stopped
+    name: confluent-schema-registry.service
+  when: inventory_hostname in groups['kafka-sit-registry']
+  tags: stop
+
+- name: Stop KSQL service
+  ansible.builtin.systemd:
+    state: stopped
+    name: confluent-ksqldb.service
+  when: inventory_hostname in groups['kafka-sit-connect-ksql']
+  tags: stop
+
+
+- name: Stop REST service
+  ansible.builtin.systemd:
+    state: stopped
+    name: confluent-kafka-rest.service
+  when: inventory_hostname in groups['kafka-sit-rest']
+  tags: stop
+
+- name: Stop Connect service
+  ansible.builtin.systemd:
+    state: stopped
+    name: confluent-kafka-connect.service
+  when: inventory_hostname in groups['kafka-sit-connect-ksql']
+  tags: stop
+
+
+- name: Stop Control Center service
+  ansible.builtin.systemd:
+    state: stopped
+    name: confluent-control-center.service
+  when: inventory_hostname in groups['kafka-sit-control-center']
+  tags: stop

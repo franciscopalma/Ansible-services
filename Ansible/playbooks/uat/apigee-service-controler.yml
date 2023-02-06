@@ -1,0 +1,7 @@
+#start&stop-apigee-services.yml
+
+---
+ - hosts: apigee-uat-hosts
+   become: true
+   roles:
+    - ../../roles/uat/apigee-services

@@ -1,0 +1,42 @@
+- name: Start Oracle Database ASM
+  command: sudo /opt/grid/19.3.0/bin/crsctl start has -wait
+  when: inventory_hostname in groups['esb-sit-database']
+  tags: start
+
+- name: Start Oracle Database WEBMDDB1
+  command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl start database -d webmddb1
+  when: inventory_hostname in groups['esb-sit-database']
+  tags: start
+
+- name: Start Universal Messaging Server
+  ansible.builtin.systemd:
+    state: started
+    name: um.service
+  when: inventory_hostname in groups['esb-sit-ums']
+  tags: start
+
+- name: Start Terracotta
+  ansible.builtin.systemd:
+    state: started
+    name: terracotta.service
+  when: inventory_hostname in groups['esb-sit-terracota-is']
+  tags: start
+
+- name: Start Integration Server
+  ansible.builtin.systemd:
+    state: started
+    name: is.service
+  when: inventory_hostname in groups['esb-sit-terracota-is']
+  tags: start
+
+- name: Start My Webmethods Server
+  ansible.builtin.systemd:
+    state: started
+    name: mws.service
+  when: inventory_hostname in groups['esb-sit-mws']
+  tags: start
+
+
+
+
+

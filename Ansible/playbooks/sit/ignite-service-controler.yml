@@ -1,0 +1,7 @@
+#start&stop-ignite-services.yml
+
+---
+  - hosts: ignite-sit-hosts
+    become: true
+    roles:
+      - ../../roles/sit/ignite-services

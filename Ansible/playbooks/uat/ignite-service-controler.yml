@@ -1,0 +1,7 @@
+#start&stop-ignite-services.yml
+
+---
+  - hosts: ignite-uat-hosts
+    become: true
+    roles:
+      - ../../roles/uat/ignite-services

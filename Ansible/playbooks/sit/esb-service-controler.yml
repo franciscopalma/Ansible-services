@@ -4,4 +4,4 @@
  - hosts: esb-sit-hosts
    become: true
    roles:
-    - ../../roles/esb-services
+    - ../../roles/sit/esb-services

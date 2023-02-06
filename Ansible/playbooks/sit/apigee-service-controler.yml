@@ -1,0 +1,7 @@
+#start&stop-apigee-services.yml
+
+---
+ - hosts: apigee-sit-hosts
+   become: true
+   roles:
+    - ../../roles/sit/apigee-services

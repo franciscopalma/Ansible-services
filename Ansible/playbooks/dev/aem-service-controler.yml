@@ -4,4 +4,4 @@
  - hosts: aem-dev-hosts
    become: true
    roles:
-    - ../../roles/aem-services
+    - ../../roles/dev/aem-services

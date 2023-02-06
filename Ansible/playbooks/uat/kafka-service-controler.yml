@@ -1,0 +1,9 @@
+#start&stop-kafka-services.yml
+
+---
+  - hosts: kafka-uat-hosts
+    become: true
+    roles:
+      - ../../roles/uat/kafka-services
+
+  

@@ -4,4 +4,4 @@
  - hosts: esb-dev-hosts
    become: true
    roles:
-    - ../../roles/esb-services
+    - ../../roles/dev/esb-services

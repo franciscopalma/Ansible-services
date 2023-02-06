@@ -1,0 +1,7 @@
+#start&stop-aem-services.yml
+
+---
+ - hosts: aem-uat-hosts
+   become: true
+   roles:
+    - ../../roles/uat/aem-services

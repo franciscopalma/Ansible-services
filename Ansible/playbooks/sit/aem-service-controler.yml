@@ -1,0 +1,7 @@
+#start&stop-aem-services.yml
+
+---
+ - hosts: aem-sit-hosts
+   become: true
+   roles:
+    - ../../roles/sit/aem-services

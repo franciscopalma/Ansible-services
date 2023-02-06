@@ -2,71 +2,104 @@
 
 
 [all:children]
-kafka-dev-servers
-apigee-dev-servers
+kafka-dev-hosts
+apigee-dev-hosts
 ignite-dev-hosts
 aem-dev-hosts
 esb-dev-hosts
+kafka-sit-hosts
+apigee-sit-hosts
+ignite-sit-hosts
+aem-sit-hosts
+esb-sit-hosts
+opensearch-devops-hosts
+aem-uat-hosts
+apigee-uat-hosts
+esb-uat-hosts
+ignite-uat-hosts
+kafka-uat-hosts
 
+
+############### DEVOPS ###################
+
+#OPENSEARCH
+
+[opensearch-devops-hosts]
+SCDvLCFS18.stc.com.sa ansible_host=10.27.136.5
+SCDvLCFS19.stc.com.sa ansible_host=10.27.136.6
+SCDvLCFS20.stc.com.sa ansible_host=10.27.136.7
+SCDvLCFS21.stc.com.sa ansible_host=10.27.136.8
+SCDvLCFS22.stc.com.sa ansible_host=10.27.136.9
+SCDvLCFS23.stc.com.sa ansible_host=10.27.136.10
+SCDvLCFS24.stc.com.sa ansible_host=10.27.136.11
+SCDvLCFS25.stc.com.sa ansible_host=10.27.136.12
+SCDvLCFS26.stc.com.sa ansible_host=10.27.136.13
+SCDvLCFS27.stc.com.sa ansible_host=10.27.136.14
+SCDvLCFS28.stc.com.sa ansible_host=10.27.136.15
+SCDvLCFS29.stc.com.sa ansible_host=10.27.136.16
+SCDvLCFS30.stc.com.sa ansible_host=10.27.136.17
+SCDvLCFS15.stc.com.sa ansible_host=10.27.136.2
+SCDvLCFS16.stc.com.sa ansible_host=10.27.136.3
+SCDvLCFS17.stc.com.sa ansible_host=10.27.136.4
 
 ############### DEV ###################
 
 #KAFKA
 
-[kafka-dev-servers:children]
-dev-connect-ksql
-dev-registry
-dev-rest
-dev-control-center
-dev-zookeper
+[kafka-dev-hosts:children]
+kafka-dev-connect-ksql
+kafka-dev-registry
+kafka-dev-rest
+kafka-dev-control-center
+kafka-dev-zookeper
 
-[dev-connect-ksql]
+[kafka-dev-connect-ksql]
 scdvlcfs80.stc.com.sa ansible_host=10.27.132.194
 
-[dev-registry]
+[kafka-dev-registry]
 scdvlcfs81.stc.com.sa ansible_host=10.27.132.196
 
-[dev-rest]
+[kafka-dev-rest]
 scdvlcfs82.stc.com.sa ansible_host=10.27.132.198
 
-[dev-control-center]
+[kafka-dev-control-center]
 scdvlcfs83.stc.com.sa ansible_host=10.27.132.200
 
-[dev-zookeper]
+[kafka-dev-zookeper]
 scdvlcfs84.stc.com.sa ansible_host=10.27.132.202
 scdvlcfs85.stc.com.sa ansible_host=10.27.132.203
 scdvlcfs86.stc.com.sa ansible_host=10.27.132.204
 
 # APIGEE
 
-[apigee-dev-servers:children]
-dev-zookeper-cassandra
-dev-open-man-edge
-dev-router-msg
-dev-post-qipd
-dev-portal-lb
-dev-portaldb
+[apigee-dev-hosts:children]
+apigee-dev-zookeper-cassandra
+apigee-dev-open-man-edge
+apigee-dev-router-msg
+apigee-dev-post-qipd
+apigee-dev-portal-lb
+apigee-dev-portaldb
 
-[dev-zookeper-cassandra]
+[apigee-dev-zookeper-cassandra]
 SCDvLMCD29.stc.com.sa ansible_host=10.21.203.150
 SCDvLMCD30.stc.com.sa ansible_host=10.21.203.151
 SCDvLMCD31.stc.com.sa ansible_host=10.21.203.152
 
-[dev-open-man-edge]
+[apigee-dev-open-man-edge]
 SCDvLMCD29.stc.com.sa ansible_host=10.21.203.150
 
-[dev-router-msg]
+[apigee-dev-router-msg]
 SCDvLMCD30.stc.com.sa ansible_host=10.21.203.151
 SCDvLMCD31.stc.com.sa ansible_host=10.21.203.152
 
-[dev-post-qipd]
+[apigee-dev-post-qipd]
 DBDvLCFS09.stc.com.sa ansible_host=10.27.132.183
 DBDvLCFS10.stc.com.sa ansible_host=10.27.132.184
 
-[dev-portal-lb]
+[apigee-dev-portal-lb]
 SCDvLMCD32.stc.com.sa ansible_host=10.21.203.153
 
-[dev-portaldb]
+[apigee-dev-portaldb]
 SCDvLMCD33.stc.com.sa ansible_host=10.21.203.154
 DBDvLCFS09.stc.com.sa ansible_host=10.27.132.183
 DBDvLCFS10.stc.com.sa ansible_host=10.27.132.184
@@ -124,7 +157,68 @@ scdvlcfs97.stc.com.sa ansible_host=10.27.132.222
 
 ############### SIT ###################
 
+#AEM
+
+[aem-sit-hosts:children]
+aem-sit-author
+aem-sit-publish
+aem-sit-httpd
+
+[aem-sit-author]
+SCDvLCFS72.stc.com.sa ansible_host=10.27.132.177
+SCDvLCFS73.stc.com.sa ansible_host=10.27.132.178
+
+[aem-sit-publish]
+SCDvLCFS74.stc.com.sa ansible_host=10.27.132.180
+SCDvLCFS75.stc.com.sa ansible_host=10.27.132.181
+
+[aem-sit-httpd]
+SCDvLMCD34.stc.com.sa ansible_host=10.21.203.147
+SCDvLMCD35.stc.com.sa ansible_host=10.21.203.148
+
+
+#APIGEE
+
+[apigee-sit-hosts:children]
+apigee-sit-zookeper-cassandra
+apigee-sit-open-man-edge
+apigee-sit-router-msg
+apigee-sit-post-qipd
+apigee-sit-portal-lb
+apigee-sit-portaldb
+
+[apigee-sit-zookeper-cassandra]
+SCDvLMCD36.stc.com.sa ansible_host=10.21.203.139
+SCDvLMCD37.stc.com.sa ansible_host=10.21.203.140
+SCDvLMCD38.stc.com.sa ansible_host=10.21.203.141
+
+[apigee-sit-open-man-edge]
+SCDvLMCD36.stc.com.sa ansible_host=10.21.203.139
+
+[apigee-sit-router-msg]
+SCDvLMCD37.stc.com.sa ansible_host=10.21.203.140
+SCDvLMCD38.stc.com.sa ansible_host=10.21.203.141
+
+[apigee-sit-post-qipd]
+DBDvLCFS04.stc.com.sa ansible_host=10.27.132.122
+DBDvLCFS05.stc.com.sa ansible_host=10.27.132.123
+
+[apigee-sit-portal-lb]
+SCDvLMCD39.stc.com.sa ansible_host=10.21.203.142
+
+[apigee-sit-portaldb]
+SCDvLMCD40.stc.com.sa ansible_host=10.21.203.143
+DBDvLCFS04.stc.com.sa ansible_host=10.27.132.122
+DBDvLCFS05.stc.com.sa ansible_host=10.27.132.123
+
+
 #ESB
+
+[esb-sit-hosts:children]
+esb-sit-database
+esb-sit-terracota-is
+esb-sit-mws
+esb-sit-ums
 
 [esb-sit-database]
 dbdvlcfs01.stc.com.sa ansible_host=10.27.132.125
@@ -143,6 +237,179 @@ scdvlcfs55.stc.com.sa ansible_host=10.27.132.137
 scdvlcfs55.stc.com.sa ansible_host=10.27.132.137
 scdvlcfs56.stc.com.sa ansible_host=10.27.132.142
 scdvlcfs57.stc.com.sa ansible_host=10.27.132.143
+
+
+#IGNITE
+
+[ignite-sit-hosts]
+SCDvLCFS75.stc.com.sa ansible_host=10.27.132.144
+SCDvLCFS76.stc.com.sa ansible_host=10.27.132.145
+SCDvLCFS77.stc.com.sa ansible_host=10.27.132.146
+SCDvLCFS78.stc.com.sa ansible_host=10.27.132.147
+
+
+#KAFKA
+
+[kafka-sit-hosts:children]
+kafka-sit-connect-ksql
+kafka-sit-registry
+kafka-sit-rest
+kafka-sit-control-center
+kafka-sit-zookeper
+
+[kafka-sit-connect-ksql]
+scdvlcfs80.stc.com.sa ansible_host=10.27.132.194
+
+[kafka-sit-registry]
+scdvlcfs81.stc.com.sa ansible_host=10.27.132.196
+
+[kafka-sit-rest]
+scdvlcfs82.stc.com.sa ansible_host=10.27.132.198
+
+[kafka-sit-control-center]
+scdvlcfs83.stc.com.sa ansible_host=10.27.132.200
+
+[kafka-sit-zookeper]
+scdvlcfs84.stc.com.sa ansible_host=10.27.132.202
+scdvlcfs85.stc.com.sa ansible_host=10.27.132.203
+scdvlcfs86.stc.com.sa ansible_host=10.27.132.204
+
+
+
+############### UAT ###################
+
+#AEM
+
+[aem-uat-hosts:children]
+aem-uat-author
+aem-uat-publish
+aem-uat-httpd
+
+[aem-uat-author]
+SCDvLJWT16.stc.com.sa ansible_host=10.27.132.116
+SCDvLJWT17.stc.com.sa ansible_host=10.27.132.117
+
+[aem-uat-publish]
+SCDvLJWT18.stc.com.sa ansible_host=10.27.132.119
+SCDvLJWT19.stc.com.sa ansible_host=10.27.132.120
+
+[aem-uat-httpd]
+SCDvLJWT20.stc.com.sa ansible_host=10.21.203.136
+SCDvLJWT21.stc.com.sa ansible_host=10.21.203.137
+
+
+#APIGEE
+
+[apigee-uat-hosts:children]
+apigee-uat-zookeper-cassandra
+apigee-uat-qpid
+apigee-uat-postgres
+apigee-uat-man-edge
+apigee-uat-openldap
+apigee-uat-router-msg
+apigee-uat-portal-lb
+apigee-uat-portaldb
+
+[apigee-uat-zookeper-cassandra]
+dbdvljwt01.stc.com.sa ansible_host=10.27.132.2
+dbdvljwt02.stc.com.sa ansible_host=10.27.132.3
+dbdvljwt03.stc.com.sa ansible_host=10.27.132.4
+
+[apigee-uat-qpid]
+dbdvljwt04.stc.com.sa ansible_host=10.27.132.5
+dbdvljwt05.stc.com.sa ansible_host=10.27.132.6
+
+[apigee-uat-postgres]
+dbdvljwt06.stc.com.sa ansible_host=10.27.132.7
+dbdvljwt07.stc.com.sa ansible_host=10.27.132.8
+
+[apigee-uat-man-edge]
+scdvljwv01.stc.com.sa ansible_host=10.27.132.13
+scdvljwv02.stc.com.sa ansible_host=10.27.132.14
+
+[apigee-uat-openldap]
+scdvljwv03.stc.com.sa ansible_host=10.27.132.15
+
+[apigee-uat-router-msg]
+scdvljwv04.stc.com.sa ansible_host=10.21.203.130
+scdvljwv05.stc.com.sa ansible_host=10.21.203.131
+
+[apigee-uat-portal-lb]
+scdvljwv06.stc.com.sa ansible_host=10.21.203.132
+
+[apigee-uat-portaldb]
+scdvljwv07.stc.com.sa ansible_host=10.21.203.133
+
+
+
+#ESB
+
+[esb-uat-hosts:children]
+esb-uat-database
+esb-uat-terracota-is
+esb-uat-mws
+esb-uat-ums
+
+[esb-uat-database]
+dbdvljwt35.stc.com.sa ansible_host=10.27.132.20
+dbdvljwt36.stc.com.sa ansible_host=10.27.132.22
+
+[esb-uat-terracota-is]
+scdvljwt24.stc.com.sa ansible_host=10.27.132.31
+scdvljwt25.stc.com.sa ansible_host=10.27.132.32
+scdvljwt26.stc.com.sa ansible_host=10.27.132.33
+scdvljwt27.stc.com.sa ansible_host=10.27.132.34
+scdvljwt51.stc.com.sa ansible_host=10.27.132.40
+scdvljwt29.stc.com.sa ansible_host=10.27.132.41
+
+[esb-uat-mws]
+scdvljwt28.stc.com.sa ansible_host=10.27.132.37
+scdvljwt50.stc.com.sa ansible_host=10.27.132.38
+
+[esb-uat-ums]
+scdvljwt30.stc.com.sa ansible_host=10.27.132.43
+scdvljwt31.stc.com.sa ansible_host=10.27.132.44
+scdvljwt32.stc.com.sa ansible_host=10.27.132.46
+scdvljwt33.stc.com.sa ansible_host=10.27.132.47
+scdvljwt34.stc.com.sa ansible_host=10.27.132.48
+
+
+#IGNITE
+
+[ignite-uat-hosts]
+scdvljwv08.stc.com.sa ansible_host=10.27.132.51
+scdvljwv09.stc.com.sa ansible_host=10.27.132.52
+scdvljwv10.stc.com.sa ansible_host=10.27.132.53
+scdvljwv11.stc.com.sa ansible_host=10.27.132.54
+scdvljwv12.stc.com.sa ansible_host=10.27.132.55
+scdvljwv13.stc.com.sa ansible_host=10.27.132.56
+
+
+#KAFKA
+
+[kafka-uat-hosts:children]
+kafka-uat-connect-rest
+kafka-uat-registry-ksql
+kafka-uat-control-center
+kafka-uat-zookeper
+
+[kafka-uat-connect-rest]
+scdvljwv14.stc.com.sa ansible_host=10.27.132.60
+scdvljwv15.stc.com.sa ansible_host=10.27.132.61
+
+[kafka-uat-registry-ksql]
+scdvljwv16.stc.com.sa ansible_host=10.27.132.63
+scdvljwv17.stc.com.sa ansible_host=10.27.132.64
+
+[kafka-uat-control-center]
+scdvljwv18.stc.com.sa ansible_host=10.27.132.66
+
+[kafka-uat-zookeper]
+scdvljwv19.stc.com.sa ansible_host=10.27.132.68
+scdvljwv20.stc.com.sa ansible_host=10.27.132.69
+scdvljwv21.stc.com.sa ansible_host=10.27.132.70
+
+
 
 
 
