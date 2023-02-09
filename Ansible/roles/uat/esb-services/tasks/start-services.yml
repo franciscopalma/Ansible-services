@@ -1,24 +1,29 @@
-#- name: Check if there are any database process running
-#  shell: /opt/grid/19.3.0/bin/crsctl status res | grep -wns asm -A 1
-#  when: inventory_hostname in groups['esb-uat-database']
-#  register: databasename
-#  tags: start
-
-#- name: debug 
-#  ansible.builtin.debug:
-#    msg: "process running"
-#  when: ('"asm_pmon_+ASM1" not in databasename')
-
-- name: Start Oracle Database ASM
-  ignore_errors: true
-  command: sudo /opt/grid/19.3.0/bin/crsctl start crs -wait
+- name: Check if ASM Database is running
+  shell: ps -ef | grep -v grep | grep -c asm_pmon
   when: inventory_hostname in groups['esb-uat-database']
+  register: databaseasm
   tags: start
 
-- name: Start Oracle Database WEBMDDB1
+- name: Start ASM Database 
+  ignore_errors: true
+  command: sudo /opt/grid/19.3.0/bin/crsctl start crs -wait
+  when: 
+    - inventory_hostname in groups['esb-uat-database']
+    - databasecount.stdout == "1"
+  tags: start
+
+- name: Check if WEBMUDB Database is running
+  shell: ps -ef | grep -v grep | grep -c ora_pmon_WEBMUDB
+  when: inventory_hostname in groups['esb-uat-database']
+  register: databasewebmudb
+  tags: start  
+
+- name: Start WEBMDDB1 Database 
   ignore_errors: true
   command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl start database -d WEBMUDB
-  when: inventory_hostname in groups['esb-uat-database']
+  when: 
+    - inventory_hostname in groups['esb-uat-database']
+    - databasewebmudb.stdout == "1"
   tags: start
 
 - name: Start Universal Messaging Server
