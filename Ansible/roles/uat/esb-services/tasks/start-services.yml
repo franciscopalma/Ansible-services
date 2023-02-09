@@ -9,7 +9,7 @@
   command: sudo /opt/grid/19.3.0/bin/crsctl start crs -wait
   when: 
     - inventory_hostname in groups['esb-uat-database']
-    - databasecount.stdout == "1"
+    - databaseasm.stdout != "1"
   tags: start
 
 - name: Check if WEBMUDB Database is running
@@ -23,7 +23,7 @@
   command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl start database -d WEBMUDB
   when: 
     - inventory_hostname in groups['esb-uat-database']
-    - databasewebmudb.stdout == "1"
+    - databasewebmudb.stdout != "1"
   tags: start
 
 - name: Start Universal Messaging Server
