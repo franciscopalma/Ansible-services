@@ -38,12 +38,12 @@
   when: inventory_hostname in groups['esb-uat-database2']
   tags: stop
 
-- name: Stop Oracle Database WEBMDDB1
-  command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl stop database -d WEBMUDB
-  when: 
-    - inventory_hostname in groups['esb-uat-database2']
-    - databasewebmudb.stdout == "1"
-  tags: stop
+#- name: Stop Oracle Database WEBMDDB1
+#  command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl stop database -d WEBMUDB
+#  when: 
+#    - inventory_hostname in groups['esb-uat-database2']
+#    - databasewebmudb.stdout == "1"
+#  tags: stop
 
 - name: Check if ASM Database is running
   shell: "ps -ef | grep -v grep | grep asm_pmon | wc -l"
