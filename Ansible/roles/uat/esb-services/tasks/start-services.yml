@@ -4,11 +4,6 @@
   register: databaseasm
   tags: start
 
-- name: Print ps -ef
-  ansible.builtin.debug:
-    msg: databaseasm
-  tags: start
-
 - name: Start ASM Database 
   ignore_errors: true
   command: sudo /opt/grid/19.3.0/bin/crsctl start crs -wait
