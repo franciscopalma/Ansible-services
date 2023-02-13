@@ -22,6 +22,7 @@
   when: 
     - inventory_hostname in groups['esb-uat-database']
     - databasewebmudb.rc != "1"
+  failed_when: databasewebmudb.rc == "2"
   tags: start
 
 - name: Start Universal Messaging Server
