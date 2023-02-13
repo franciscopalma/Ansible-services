@@ -1,5 +1,5 @@
 - name: Check if ASM Database is running
-  shell: "ps -ef | grep -v grep | grep -c asm_pmon"
+  command: "ps -ef | grep -v grep | grep -c asm_pmon"
   when: inventory_hostname in groups['esb-uat-database']
   register: databaseasm
   failed_when: databaseasm not in [ 1 ]”
