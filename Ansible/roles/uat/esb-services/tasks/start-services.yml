@@ -1,8 +1,12 @@
 - name: Check if ASM Database is running
-  shell: ps -ef | grep -v grep | grep -c asm_pmon
+  shell: "ps -ef | grep -v grep | grep -c asm_pmon"
   when: inventory_hostname in groups['esb-uat-database']
   register: databaseasm
   tags: start
+
+- name: Print ps -ef
+  ansible.builtin.debug:
+    msg: databaseasm
 
 - name: Start ASM Database 
   ignore_errors: true
