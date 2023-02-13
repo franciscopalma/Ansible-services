@@ -12,7 +12,7 @@
   tags: start
 
 - name: Check if WEBMUDB Database is running
-  shell: "ps -ef | grep -v grep | grep -c ora_pmon_WEBMUDB | wc -l"
+  shell: "ps -ef | grep -v grep | grep ora_pmon_WEBMUDB | wc -l"
   when: inventory_hostname in groups['esb-uat-database2']
   register: databasewebmudb
   tags: start  
