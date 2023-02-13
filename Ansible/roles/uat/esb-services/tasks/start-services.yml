@@ -13,15 +13,15 @@
 
 - name: Check if WEBMUDB Database is running
   shell: "ps -ef | grep -v grep | grep ora_pmon_WEBMUDB | wc -l"
-  when: inventory_hostname in groups['esb-uat-database']
+  when: inventory_hostname in groups['esb-uat-database2']
   register: databasewebmudb
   tags: start  
 
 - name: Start WEBMDDB1 Database 
   command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl start database -d WEBMUDB
   when: 
-    - inventory_hostname in groups['esb-uat-database']
-    - databasewebmudb.rc != "2"
+    - inventory_hostname in groups['esb-uat-database2']
+    - databasewebmudb.rc != "1"
   tags: start
 
 - name: Start Universal Messaging Server
