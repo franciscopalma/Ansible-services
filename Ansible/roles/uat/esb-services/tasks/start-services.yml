@@ -5,7 +5,6 @@
   tags: start
 
 - name: Start ASM Database 
-  ignore_errors: true
   command: sudo /opt/grid/19.3.0/bin/crsctl start crs -wait
   when: 
     - inventory_hostname in groups['esb-uat-database1']
@@ -19,7 +18,6 @@
   tags: start  
 
 - name: Start WEBMDDB1 Database 
-  ignore_errors: true
   command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl start database -d WEBMUDB
   when: 
     - inventory_hostname in groups['esb-uat-database2']
