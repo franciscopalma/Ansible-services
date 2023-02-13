@@ -355,7 +355,7 @@ esb-uat-ums
 dbdvljwt35.stc.com.sa ansible_host=10.27.132.20
 dbdvljwt36.stc.com.sa ansible_host=10.27.132.22
 
-[esb-uat-database]
+[esb-uat-database2]
 dbdvljwt35.stc.com.sa ansible_host=10.27.132.22
 
 [esb-uat-terracota-is]
