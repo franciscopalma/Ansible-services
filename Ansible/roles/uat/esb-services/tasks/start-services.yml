@@ -21,7 +21,7 @@
   command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl start database -d WEBMUDB
   when: 
     - inventory_hostname in groups['esb-uat-database']
-    - databasewebmudb.stdout != "1"
+    - databasewebmudb.rc not in [1]
   tags: start
 
 - name: Start Universal Messaging Server
