@@ -1,8 +1,7 @@
 - name: Check if ASM Database is running
   shell: "ps -ef | grep -v grep | grep -c asm_pmon"
-  when: inventory_hostname in groups['esb-uat-database']
+  when: inventory_hostname in groups['esb-uat-database1']
   register: databaseasm
-  failed_when: "databaseasm not in [ 1 ]"
   tags: start
 
 - name: Print ps -ef
@@ -13,13 +12,13 @@
   ignore_errors: true
   command: sudo /opt/grid/19.3.0/bin/crsctl start crs -wait
   when: 
-    - inventory_hostname in groups['esb-uat-database']
+    - inventory_hostname in groups['esb-uat-database1']
     - databaseasm.stdout != "1"
   tags: start
 
 - name: Check if WEBMUDB Database is running
   shell: ps -ef | grep -v grep | grep -c ora_pmon_WEBMUDB
-  when: inventory_hostname in groups['esb-uat-database']
+  when: inventory_hostname in groups['esb-uat-database2']
   register: databasewebmudb
   tags: start  
 
@@ -27,7 +26,7 @@
   ignore_errors: true
   command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl start database -d WEBMUDB
   when: 
-    - inventory_hostname in groups['esb-uat-database']
+    - inventory_hostname in groups['esb-uat-database2']
     - databasewebmudb.stdout != "1"
   tags: start
 
