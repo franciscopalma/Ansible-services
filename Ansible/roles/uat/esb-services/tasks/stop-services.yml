@@ -35,6 +35,7 @@
 - name: Print return information from the previous task
   ansible.builtin.debug:
     var: databasewebmudb
+  when: inventory_hostname in groups['esb-uat-database2']
   tags: stop
 
 - name: Stop Oracle Database WEBMDDB1
