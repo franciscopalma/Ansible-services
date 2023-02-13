@@ -7,6 +7,7 @@
 - name: Print ps -ef
   ansible.builtin.debug:
     msg: databaseasm
+  tags: start
 
 - name: Start ASM Database 
   ignore_errors: true
