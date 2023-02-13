@@ -29,7 +29,6 @@
 - name: Check if WEBMUDB Database is stopped
   shell: "ps -ef | grep -v grep | grep -c ora_pmon_WEBMUDB | wc -l"
   when: inventory_hostname in groups['esb-uat-database2']
-    
   register: databasewebmudb
   tags: stop 
 
@@ -37,7 +36,7 @@
   command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl stop database -d WEBMUDB
   when: 
     - inventory_hostname in groups['esb-uat-database2']
-    - databaseasm.stdout != "0"
+    - databasewebmudb.stdout == "1"
   tags: stop
 
 - name: Check if ASM Database is running
@@ -50,6 +49,6 @@
   command: sudo /opt/grid/19.3.0/bin/crsctl stop crs
   when: 
     - inventory_hostname in groups['esb-uat-database1']
-    - databaseasm.stdout != "0"
+    - databaseasm.stdout == "1"
   tags: stop
 
