@@ -26,29 +26,29 @@
   when: inventory_hostname in groups['esb-uat-ums']
   tags: stop
 
-- name: Check if WEBMUDB Database is running
-  shell: "ps -ef | grep -v grep | grep ora_pmon_WEBMUDB | wc -l"
-  when: inventory_hostname in groups['esb-uat-database']
-  register: databasewebmudb
-  tags: stop
+#- name: Check if WEBMUDB Database is running
+#  shell: "ps -ef | grep -v grep | grep ora_pmon_WEBMUDB | wc -l"
+#  when: inventory_hostname in groups['esb-uat-database']
+#  register: databasewebmudb
+#  tags: stop
 
-- name: Stop Oracle Database WEBMDDB1
-  command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl stop database -d WEBMUDB
-  when: 
-    - inventory_hostname in groups['esb-uat-database']
-    - databasewebmudb.stdout == "1"
-  tags: stop
+#- name: Stop Oracle Database WEBMDDB1
+#  command: sudo -iu oracle /opt/oracle/19.3.0/bin/srvctl stop database -d WEBMUDB
+#  when: 
+#    - inventory_hostname in groups['esb-uat-database']
+#    - databasewebmudb.stdout == "1"
+#  tags: stop
 
-- name: Check if ASM Database is running
-  shell: "ps -ef | grep -v grep | grep asm_pmon | wc -l"
-  when: inventory_hostname in groups['esb-uat-database']
-  register: databaseasm
-  tags: stop
+#- name: Check if ASM Database is running
+#  shell: "ps -ef | grep -v grep | grep asm_pmon | wc -l"
+#  when: inventory_hostname in groups['esb-uat-database']
+#  register: databaseasm
+#  tags: stop
 
-- name: Stop Oracle Database ASM
-  command: sudo /opt/grid/19.3.0/bin/crsctl stop crs
-  when: 
-    - inventory_hostname in groups['esb-uat-database']
-    - databaseasm.stdout == "1"
-  tags: stop
+#- name: Stop Oracle Database ASM
+#  command: sudo /opt/grid/19.3.0/bin/crsctl stop crs
+#  when: 
+#    - inventory_hostname in groups['esb-uat-database']
+#    - databaseasm.stdout == "1"
+#  tags: stop
 
