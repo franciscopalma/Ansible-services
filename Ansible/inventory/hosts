@@ -411,5 +411,160 @@ scdvljwv21.stc.com.sa ansible_host=10.27.132.70
 
 
 
+############### PROD ###################
+
+#AEM
+
+[aem-prd-hosts:children]
+aem-prd-author
+aem-prd-publish
+aem-prd-httpd
+
+[aem-prd-author]
+scprljwt102.stc.com.sa ansible_host=10.27.6.150
+scprljwv01.stc.com.sa  ansible_host=10.27.6.151
+
+[aem-prd-publish]
+scprljwv02.stc.com.sa  ansible_host=10.27.6.153
+scprljwv03.stc.com.sa  ansible_host=10.27.6.154
+
+[aem-prd-httpd]
+scprlwv04.stc.com.sa   ansible_host=10.21.203.104
+scprljwv05.stc.com.sa  ansible_host=10.21.203.1057
+
+
+#APIGEE
+
+[apigee-uat-hosts:children]
+apigee-prd-zookeper-cassandra
+apigee-prd-qpid
+apigee-prd-postgres
+apigee-prd-man-edge
+apigee-prd-openldap
+apigee-prd-router-msg
+apigee-prd-portal-lb
+apigee-prd-portaldb
+
+[apigee-prd-zookeper-cassandra]
+dbprljwt01.stc.com.sa ansible_host=10.27.6.2
+dbprljwt02.stc.com.sa ansible_host=10.27.6.3
+dbprljwt03.stc.com.sa ansible_host=10.27.6.4
+
+[apigee-prd-qpid]
+dbprljwt04.stc.com.sa ansible_host=10.27.6.5
+dbprljwt05.stc.com.sa ansible_host=10.27.6.6
+
+[apigee-prd-postgres]
+dbprljwt06.stc.com.sa ansible_host=10.27.6.7
+dbprljwt07.stc.com.sa ansible_host=10.27.6.8
+
+[apigee-prd-man-edge]
+scprljwt01.stc.com.sa ansible_host=10.27.6.13
+scprljwt02.stc.com.sa ansible_host=10.27.6.14
+
+[apigee-prd-openldap]
+scprljwt01.stc.com.sa ansible_host=10.27.6.13
+scprljwt02.stc.com.sa ansible_host=10.27.6.14
+scprljwt03.stc.com.sa ansible_host=10.27.6.15
+
+[apigee-prd-router-msg]
+scprljwt04.stc.com.sa ansible_host=10.21.203.98
+scprljwt05.stc.com.sa ansible_host=10.21.203.99
+
+[apigee-prd-portal-lb]
+scprljwt06.stc.com.sa ansible_host=10.21.203.101
+
+[apigee-prd-portaldb]
+scprljwt06.stc.com.sa ansible_host=10.21.203.101
+scprljwt07.stc.com.sa ansible_host=10.21.203.102
+
+
+
+#ESB
+
+[esb-prd-hosts:children]
+esb-prd-database
+esb-prd-terracota-is
+esb-prd-mws
+esb-prd-ums
+
+[esb-prd-database]
+dbprljwv06.stc.com.sa  ansible_host=10.27.6.20
+dbprljwv07.stc.com.sa  ansible_host=10.27.6.22
+
+[esb-prd-terracota-is]
+scprljwv08.stc.com.sa  ansible_host=10.27.6.31
+scprljwv09.stc.com.sa  ansible_host=10.27.6.32
+scprljwv10.stc.com.sa  ansible_host=10.27.6.33
+scprljwv11.stc.com.sa  ansible_host=10.27.6.34
+scprljwv40.stc.com.sa  ansible_host=10.27.6.40
+scprljwt103.stc.com.sa ansible_host=10.27.6.41
+
+[esb-prd-mws]
+scprljwv12.stc.com.sa  ansible_host=10.27.6.37
+scprljwv13.stc.com.sa  ansible_host=10.27.6.38
+
+[esb-prd-ums]
+scprljwt104.stc.com.sa ansible_host=10.27.6.43
+scprljwt105.stc.com.sa ansible_host=10.27.6.44
+scprljwt106.stc.com.sa ansible_host=10.27.6.46
+scprljwt107.stc.com.sa ansible_host=10.27.6.47
+scprljwt108.stc.com.sa ansible_host=10.27.6.48
+
+
+#IGNITE
+
+[ignite-prd-hosts]
+SCPrLJWT08.stc.com.sa ansible_host=10.27.6.51
+SCPrLJWT09.stc.com.sa ansible_host=10.27.6.52
+SCPrLJWT10.stc.com.sa ansible_host=10.27.6.53
+SCPrLJWT11.stc.com.sa ansible_host=10.27.6.54
+SCPrLJWT12.stc.com.sa ansible_host=10.27.6.55
+SCPrLJWT13.stc.com.sa ansible_host=10.27.6.56
+SCPrLJWT14.stc.com.sa ansible_host=10.27.6.57
+SCPrLJWT15.stc.com.sa ansible_host=10.27.6.58
+SCPrLJWT16.stc.com.sa ansible_host=10.27.6.59
+SCPrLJWT17.stc.com.sa ansible_host=10.27.6.60
+SCPrLJWT18.stc.com.sa ansible_host=10.27.6.61
+SCPrLJWT19.stc.com.sa ansible_host=10.27.6.62
+
+
+#KAFKA
+
+[kafka-prd-hosts:children]
+kafka-prd-connect-rest
+kafka-prd-registry-ksql
+kafka-prd-control-center
+kafka-prd-zookeper
+
+[kafka-prd-connect-rest]
+SCPrLJWT20.stc.com.sa ansible_host=10.27.6.69
+SCPrLJWT21.stc.com.sa ansible_host=10.27.6.70
+
+[kafka-prd-registry-ksql]
+SCPrLJWT22.stc.com.sa ansible_host=10.27.6.72
+SCPrLJWT23.stc.com.sa ansible_host=10.27.6.73
+
+[kafka-prd-control-center]
+SCPrLJWT33.stc.com.sa ansible_host=10.27.6.89
+
+[kafka-prd-zookeper]
+SCPrLJWT28.stc.com.sa ansible_host=10.27.6.81
+SCPrLJWT29.stc.com.sa ansible_host=10.27.6.82
+SCPrLJWT30.stc.com.sa ansible_host=10.27.6.83
+SCPrLJWT31.stc.com.sa ansible_host=10.27.6.84
+SCPrLJWT32.stc.com.sa ansible_host=10.27.6.85
+
+[kafka-prd-brooker]
+SCPrLJWT24.stc.com.sa ansible_host=10.27.6.75
+SCPrLJWT25.stc.com.sa ansible_host=10.27.6.76
+SCPrLJWT26.stc.com.sa ansible_host=10.27.6.77
+SCPrLJWt27.stc.com.sa ansible_host=10.27.6.78
+
+
+
+
+
+
 
 
