@@ -536,6 +536,7 @@ kafka-prd-connect-rest
 kafka-prd-registry-ksql
 kafka-prd-control-center
 kafka-prd-zookeper
+kafka-prd-brooker
 
 [kafka-prd-connect-rest]
 SCPrLJWT20.stc.com.sa ansible_host=10.27.6.69
