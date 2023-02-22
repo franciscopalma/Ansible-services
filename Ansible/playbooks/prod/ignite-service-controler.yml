@@ -1,0 +1,7 @@
+#start&stop-ignite-services.yml
+
+---
+  - hosts: ignite-prd-hosts
+    become: true
+    roles:
+      - ../../roles/prod/ignite-services

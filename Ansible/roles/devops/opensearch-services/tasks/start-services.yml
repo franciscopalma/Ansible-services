@@ -1,7 +1,0 @@
-- name: Start OpenSearch service
-  ansible.builtin.systemd:
-    state: started
-    name: opensearch.service
-  when: inventory_hostname in groups['opensearch-devops-hosts']
-  tags: start
-

@@ -1,0 +1,7 @@
+#start&stop-aem-services.yml
+
+---
+ - hosts: aem-prd-hosts
+   become: true
+   roles:
+    - ../../roles/prod/aem-services

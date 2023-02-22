@@ -1,7 +1,0 @@
-#start&stop-aem-services.yml
-
----
- - hosts: opensearch-devops-hosts
-   become: true
-   roles:
-    - ../../roles/devops/opensearch-services

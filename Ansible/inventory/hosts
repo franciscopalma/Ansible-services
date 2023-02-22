@@ -18,13 +18,27 @@ apigee-uat-hosts
 esb-uat-hosts
 ignite-uat-hosts
 kafka-uat-hosts
+aem-prd-hosts
+apigee-prd-hosts
+esb-prd-hosts
+ignite-prd-hosts
+kafka-prd-hosts
 
 
 ############### DEVOPS ###################
 
-#OPENSEARCH
+### OPENSEARCH ###
 
-[opensearch-devops-hosts]
+# NONPROD
+
+[opensearch-nonprod-hosts:children]
+opensearch-nonprod
+opensearch-nonprod-logstash
+opensearch-nonprod-dashboard
+opensearch-nonprod-zoo-kafka
+
+
+[opensearch-nonprod]
 SCDvLCFS18.stc.com.sa ansible_host=10.27.136.5
 SCDvLCFS19.stc.com.sa ansible_host=10.27.136.6
 SCDvLCFS20.stc.com.sa ansible_host=10.27.136.7
@@ -34,13 +48,47 @@ SCDvLCFS23.stc.com.sa ansible_host=10.27.136.10
 SCDvLCFS24.stc.com.sa ansible_host=10.27.136.11
 SCDvLCFS25.stc.com.sa ansible_host=10.27.136.12
 SCDvLCFS26.stc.com.sa ansible_host=10.27.136.13
-SCDvLCFS27.stc.com.sa ansible_host=10.27.136.14
-SCDvLCFS28.stc.com.sa ansible_host=10.27.136.15
 SCDvLCFS29.stc.com.sa ansible_host=10.27.136.16
 SCDvLCFS30.stc.com.sa ansible_host=10.27.136.17
+
+[opensearch-nonprod-logstash]
+SCDvLCFS27.stc.com.sa ansible_host=10.27.136.14
+SCDvLCFS28.stc.com.sa ansible_host=10.27.136.15
+
+[opensearch-nonprod-dashboard]
+SCDvLCFS29.stc.com.sa ansible_host=10.27.136.16
+SCDvLCFS30.stc.com.sa ansible_host=10.27.136.17
+
+[opensearch-nonprod-zoo-kafka]
 SCDvLCFS15.stc.com.sa ansible_host=10.27.136.2
 SCDvLCFS16.stc.com.sa ansible_host=10.27.136.3
 SCDvLCFS17.stc.com.sa ansible_host=10.27.136.4
+
+
+
+
+
+
+[opensearch-devops-nonprod]
+SCDvLCFS35.stc.com.sa ansible_host=10.27.1.30
+SCDvLCFS34.stc.com.sa ansible_host=10.27.1.29
+SCDvLCFS36.stc.com.sa ansible_host=10.27.1.31
+SCDvLCFS37.stc.com.sa ansible_host=10.27.1.32
+SCDvLCFS38.stc.com.sa ansible_host=10.27.1.33
+SCDvLCFS39.stc.com.sa ansible_host=10.27.1.34
+SCDvLCFS49.stc.com.sa ansible_host=10.27.1.35
+SCDvLCFS41.stc.com.sa ansible_host=10.27.1.36
+SCDvLCFS42.stc.com.sa ansible_host=10.27.1.37
+SCDvLCFS43.stc.com.sa ansible_host=10.27.1.38
+SCDvLCFS44.stc.com.sa ansible_host=10.27.1.39
+SCDvLCFS45.stc.com.sa ansible_host=10.27.1.40
+SCDvLCFS46.stc.com.sa ansible_host=10.27.1.41
+SCDvLCFS47.stc.com.sa ansible_host=10.27.1.42
+SCDvLCFS48.stc.com.sa ansible_host=10.27.1.43
+SCDvLCFS49.stc.com.sa ansible_host=10.27.1.44
+SCDvLCFS31.stc.com.sa ansible_host=10.27.1.26
+SCDvLCFS32.stc.com.sa ansible_host=10.27.1.27
+SCDvLCFS33.stc.com.sa ansible_host=10.27.1.28
 
 ############### DEV ###################
 

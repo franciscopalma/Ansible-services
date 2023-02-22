@@ -1,0 +1,35 @@
+- name: Start OpenSearch service
+  ansible.builtin.systemd:
+    state: started
+    name: opensearch.service
+  when: inventory_hostname in groups['opensearch-prod']
+  tags: start
+
+- name: Start Dashboard service
+  ansible.builtin.systemd:
+    state: started
+    name: dashboard.service
+  when: inventory_hostname in groups['opensearch-prod-dashboard']
+  tags: start
+
+- name: Start Logstash service
+  ansible.builtin.systemd:
+    state: started
+    name: logstash.service
+  when: inventory_hostname in groups['opensearch-prod-logstash']
+  tags: start
+
+- name: Start Zookeeper service
+  ansible.builtin.systemd:
+    state: started
+    name: confluent-zookeeper.service
+  when: inventory_hostname in groups['opensearch-prod-zoo-kafka']
+  tags: start
+
+- name: Start Kafka service
+  ansible.builtin.systemd:
+    state: started
+    name: confluent-kafka.service
+  when: inventory_hostname in groups['opensearch-prod-zoo-kafka']
+  tags: start
+

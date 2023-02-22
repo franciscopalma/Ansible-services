@@ -1,0 +1,38 @@
+- name: Stop OpenSearch service
+  ansible.builtin.systemd:
+    state: stopped
+    name: opensearch.service
+  when: inventory_hostname in groups['opensearch-nonprod']
+  tags: stop
+
+- name: Stop Dashboard service
+  ansible.builtin.systemd:
+    state: stopped
+    name: dashboard.service
+  when: inventory_hostname in groups['opensearch-nonprod-dashboard']
+  tags: stop
+
+- name: Stop Logstash service
+  ansible.builtin.systemd:
+    state: stopped
+    name: logstash.service
+  when: inventory_hostname in groups['opensearch-nonprod-logstash']
+  tags: stop
+
+- name: Stop Zookeeper service
+  ansible.builtin.systemd:
+    state: stopped
+    name: confluent-zookeeper.service
+  when: inventory_hostname in groups['opensearch-nonprod-zoo-kafka']
+  tags: stop
+
+- name: Stop Kafka service
+  ansible.builtin.systemd:
+    state: stopped
+    name: confluent-kafka.service
+  when: inventory_hostname in groups['opensearch-nonprod-zoo-kafka']
+  tags: stop
+
+
+
+ 

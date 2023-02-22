@@ -1,0 +1,7 @@
+#start&stop-esb-services.yml
+
+---
+ - hosts: esb-prd-hosts
+   become: true
+   roles:
+    - ../../roles/prod/esb-services

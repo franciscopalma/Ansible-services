@@ -1,0 +1,7 @@
+#start&stop-apigee-services.yml
+
+---
+ - hosts: apigee-prd-hosts
+   become: true
+   roles:
+    - ../../roles/prod/apigee-services

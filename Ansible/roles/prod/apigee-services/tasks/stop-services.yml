@@ -1,0 +1,94 @@
+#stop-services
+- name: Stop Management Server service
+  ansible.builtin.systemd:
+    state: stopped
+    name: edge-management-server.service
+  when: inventory_hostname in groups['apigee-prd-man-edge']
+  tags: stop
+
+- name: Stop Message Processor service
+  ansible.builtin.systemd:
+    state: stopped
+    name: edge-message-processor.service
+  when: inventory_hostname in groups['apigee-prd-router-msg']
+  tags: stop  
+
+- name: Stop Postgres service
+  ansible.builtin.systemd:
+    state: stopped
+    name: edge-postgres-server.service
+  when: inventory_hostname in groups['apigee-prd-postgres']
+  tags: stop 
+
+- name: Stop QIPD Server service
+  ansible.builtin.systemd:
+    state: stopped
+    name: edge-qpid-server.service
+  when: inventory_hostname in groups['apigee-prd-qpid']
+  tags: stop 
+
+- name: Stop Router service
+  ansible.builtin.systemd:
+    state: stopped
+    name: edge-router.service
+  when: inventory_hostname in groups['apigee-prd-router-msg']
+  tags: stop 
+
+- name: Stop Edge UI service
+  ansible.builtin.systemd:
+    state: stopped
+    name: edge-ui.service
+  when: inventory_hostname in groups['apigee-prd-man-edge']
+  tags: stop
+
+- name: Stop Cassandra service
+  ansible.builtin.systemd:
+    state: stopped
+    name: apigee-cassandra.service
+  when: inventory_hostname in groups['apigee-prd-zookeper-cassandra']
+  tags: stop
+
+- name: Stop OpenLDAP service
+  ansible.builtin.systemd:
+    state: stopped
+    name: apigee-openldap.service
+  when: inventory_hostname in groups['apigee-prd-openldap']
+  tags: stop
+
+- name: Stop Portal Database service
+  ansible.builtin.systemd:
+    state: stopped
+    name: apigee-postgresql.service
+  when: inventory_hostname in groups['apigee-prd-portaldb']
+  tags: stop
+
+- name: Stop QPID service
+  ansible.builtin.systemd:
+    state: stopped
+    name: apigee-qpidd.service
+  when: inventory_hostname in groups['apigee-prd-qpid']
+  tags: stop
+
+- name: Stop Zookeper service
+  ansible.builtin.systemd:
+    state: stopped
+    name: apigee-zookeeper.service
+  when: inventory_hostname in groups['apigee-prd-zookeper-cassandra']
+  tags: stop
+
+- name: Stop Portal service 
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-drupal-devportal stop
+  when: inventory_hostname in groups['apigee-prd-portal-lb']
+  tags: stop
+
+- name: Stop Portal LoadBalance service
+  ansible.builtin.systemd:
+    state: stopped
+    name: apigee-lb.service
+  when: inventory_hostname in groups['apigee-prd-portal-lb']
+  tags: stop
+
+
+
+
+

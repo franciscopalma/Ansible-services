@@ -1,0 +1,9 @@
+#start&stop-kafka-services.yml
+
+---
+  - hosts: kafka-prd-hosts
+    become: true
+    roles:
+      - ../../roles/prod/kafka-services
+
+  
