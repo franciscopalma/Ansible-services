@@ -1,0 +1,30 @@
+- name: Stop Jaeger service
+  ansible.builtin.systemd:
+    state: stopped
+    name: jaeger.service
+  tags: stop
+
+- name: Stop Node Exporter service
+  ansible.builtin.systemd:
+    state: stopped
+    name: node_exporter.service
+  tags: stop
+
+- name: Stop Prometheus service
+  ansible.builtin.systemd:
+    state: stopped
+    name: prometheus.service
+  tags: stop
+
+- name: Stop Alertmanager service
+  ansible.builtin.systemd:
+    state: stopped
+    name: alertmanager.service
+  tags: stop
+
+- name: Stop Blackbox Exporter service
+  ansible.builtin.systemd:
+    state: stopped
+    name: blackbox_exporter.service
+  tags: stop
+ 

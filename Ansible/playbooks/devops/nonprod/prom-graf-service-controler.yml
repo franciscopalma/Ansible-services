@@ -1,0 +1,7 @@
+#start&stop-opensearch-services.yml
+
+---
+ - hosts: prom-graf-nonprod-hosts
+   become: true
+   roles:
+    - ../../roles/devops/nonprod/prometheus-grafana-services

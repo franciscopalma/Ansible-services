@@ -1,0 +1,13 @@
+- name: Stop Gitlab Node1 
+  command: sudo gitlab-ctl stop
+  when: inventory_hostname in groups['gitlab-node1-hosts']
+  tags: stopnode1
+
+- name: stop Gitlab Node2 
+  command: sudo gitlab-ctl stop
+  when: inventory_hostname in groups['gitlab-node2-hosts']
+  tags: stopnode2
+
+
+
+ 

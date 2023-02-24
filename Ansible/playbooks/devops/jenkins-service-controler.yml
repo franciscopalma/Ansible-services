@@ -1,0 +1,7 @@
+#start&stop-jenkins-services.yml
+
+---
+ - hosts: jenkins-hosts
+   become: true
+   roles:
+    - ../../roles/devops/jenkins-services

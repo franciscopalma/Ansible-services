@@ -1,0 +1,7 @@
+#start&stop-nexus-services.yml
+
+---
+ - hosts: nexus-hosts
+   become: true
+   roles:
+    - ../../roles/devops/nexus-services

@@ -1,0 +1,30 @@
+- name: Start Jaeger service
+  ansible.builtin.systemd:
+    state: started
+    name: jaeger.service
+  tags: start
+
+- name: Start Node Exporter service
+  ansible.builtin.systemd:
+    state: started
+    name: node_exporter.service
+  tags: start
+
+- name: Start Prometheus service
+  ansible.builtin.systemd:
+    state: started
+    name: prometheus.service
+  tags: start
+
+- name: Start Alertmanager service
+  ansible.builtin.systemd:
+    state: started
+    name: alertmanager.service
+  tags: start
+
+- name: Start Blackbox Exporter service
+  ansible.builtin.systemd:
+    state: started
+    name: blackbox_exporter.service
+  tags: start
+

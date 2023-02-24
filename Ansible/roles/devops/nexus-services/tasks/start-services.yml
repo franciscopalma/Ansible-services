@@ -1,0 +1,6 @@
+- name: Start Nexus Repository
+  command: cd /opt/cicd/compose && docker-compose -f docker-compose_nexus.yml up -d
+  when: inventory_hostname in groups['nexus-hosts']
+  tags: start
+
+

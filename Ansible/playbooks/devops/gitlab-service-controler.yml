@@ -1,0 +1,7 @@
+#start&stop-gitlab-services.yml
+
+---
+ - hosts: gitlab-hosts
+   become: true
+   roles:
+    - ../../roles/devops/gitlab-services

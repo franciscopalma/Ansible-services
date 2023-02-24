@@ -12,7 +12,6 @@ apigee-sit-hosts
 ignite-sit-hosts
 aem-sit-hosts
 esb-sit-hosts
-opensearch-devops-hosts
 aem-uat-hosts
 apigee-uat-hosts
 esb-uat-hosts
@@ -23,6 +22,14 @@ apigee-prd-hosts
 esb-prd-hosts
 ignite-prd-hosts
 kafka-prd-hosts
+opensearch-nonprod-hosts
+opensearch-prod-hosts
+prom-graf-nonprod-hosts
+prom-graf-prod-hosts
+jenkins-hosts
+nexus-hosts
+sonarqube-hosts
+gitlab-hosts
 
 
 ############### DEVOPS ###################
@@ -36,7 +43,6 @@ opensearch-nonprod
 opensearch-nonprod-logstash
 opensearch-nonprod-dashboard
 opensearch-nonprod-zoo-kafka
-
 
 [opensearch-nonprod]
 SCDvLCFS18.stc.com.sa ansible_host=10.27.136.5
@@ -65,11 +71,15 @@ SCDvLCFS16.stc.com.sa ansible_host=10.27.136.3
 SCDvLCFS17.stc.com.sa ansible_host=10.27.136.4
 
 
+# PROD
 
+[opensearch-prod-hosts:children]
+opensearch-prod
+opensearch-prod-logstash
+opensearch-prod-dashboard
+opensearch-prod-zoo-kafka
 
-
-
-[opensearch-devops-nonprod]
+[opensearch-prod]
 SCDvLCFS35.stc.com.sa ansible_host=10.27.1.30
 SCDvLCFS34.stc.com.sa ansible_host=10.27.1.29
 SCDvLCFS36.stc.com.sa ansible_host=10.27.1.31
@@ -82,13 +92,87 @@ SCDvLCFS42.stc.com.sa ansible_host=10.27.1.37
 SCDvLCFS43.stc.com.sa ansible_host=10.27.1.38
 SCDvLCFS44.stc.com.sa ansible_host=10.27.1.39
 SCDvLCFS45.stc.com.sa ansible_host=10.27.1.40
+
+[opensearch-prod-logstash]
 SCDvLCFS46.stc.com.sa ansible_host=10.27.1.41
 SCDvLCFS47.stc.com.sa ansible_host=10.27.1.42
+
+[opensearch-prod-dashboard]
 SCDvLCFS48.stc.com.sa ansible_host=10.27.1.43
 SCDvLCFS49.stc.com.sa ansible_host=10.27.1.44
+
+[opensearch-prod-zoo-kafka]
 SCDvLCFS31.stc.com.sa ansible_host=10.27.1.26
 SCDvLCFS32.stc.com.sa ansible_host=10.27.1.27
 SCDvLCFS33.stc.com.sa ansible_host=10.27.1.28
+
+
+### PROMETHEUS & GRAFANA ###
+
+# NONPROD
+
+[prom-graf-nonprod-hosts]
+SCDvLCFS14.stc.com.sa ansible_host=10.27.1.15
+
+# PROD
+
+[prom-graf-prod-hosts]
+SCDvLCFS12.stc.com.sa ansible_host=10.27.1.13
+SCDvLCFS13.stc.com.sa ansible_host=10.27.1.14
+
+
+### JENKINS ###
+
+[jenkins-hosts:children]
+jenkins-master
+jenkins-celfocus
+jenkins-6d
+jenkins-qeema
+jenkins-kloudville
+jenkins-matrixx
+
+[jenkins-master]
+scdvlcfs03.stc.com.sa ansible_host=10.27.1.4
+
+[jenkins-celfocus]
+scdvlcfs04.stc.com.sa ansible_host=10.27.1.5
+
+[jenkins-6d]
+scdvlcfs05.stc.com.sa ansible_host=10.27.1.6
+
+[jenkins-qeema]
+scdvlcfs06.stc.com.sa ansible_host=10.27.1.7
+
+[jenkins-kloudville]
+scdvlcfs07.stc.com.sa ansible_host=10.27.1.8
+
+[jenkins-matrixx]
+scdvlcfs08.stc.com.sa ansible_host=10.27.1.9
+
+
+### NEXUS ###
+
+[nexus-hosts]
+scdvlcfs02.stc.com.sa ansible_host=10.27.1.3
+
+
+### SONARQUBE ###
+
+[sonarqube-hosts]
+scdvlcfs01.stc.com.sa ansible_host=10.27.1.2
+
+
+### GITLAB ###
+
+[gitlab-hosts:children]
+gitlab-node1-hosts
+
+[gitlab-node1-hosts]
+scdvlcfs11.stc.com.sa ansible_host=10.27.1.12
+
+[gitlab-node2-hosts]
+scdvlcfs10.stc.com.sa ansible_host=10.27.1.11
+
 
 ############### DEV ###################
 

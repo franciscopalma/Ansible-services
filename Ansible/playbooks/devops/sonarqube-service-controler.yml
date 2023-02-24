@@ -1,0 +1,7 @@
+#start&stop-sonarqube-services.yml
+
+---
+ - hosts: sonarqube-hosts
+   become: true
+   roles:
+    - ../../roles/devops/sonarqube-services

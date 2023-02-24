@@ -1,0 +1,30 @@
+- name: Stop Jenkins Master Node
+  command: cd /opt/cicd/compose && docker-compose -f docker-compose_jenkins.yml stop
+  when: inventory_hostname in groups['jenkins-master']
+  tags: stop
+
+- name: Stop Jenkins Build Node CELFOCUS
+  command: cd /opt/cicd/compose && docker-compose -f docker-compose_celfocus-1.yml stop
+  when: inventory_hostname in groups['jenkins-celfocus']
+  tags: stop
+
+- name: Stop Jenkins Build Node 6d
+  command: cd /opt/cicd/compose && docker-compose -f docker-compose_6d-1.yml stop
+  when: inventory_hostname in groups['jenkins-6d']
+  tags: stop
+
+- name: Stop Jenkins Build Node Matrixx
+  command: cd /opt/cicd/compose && docker-compose -f docker-compose_matrixx-1.yml stop
+  when: inventory_hostname in groups['jenkins-matrixx']
+  tags: stop
+
+- name: Stop Jenkins Build Node Kloudville
+  command: cd /opt/cicd/compose && docker-compose -f docker-compose_kloudville-1.yml stop
+  when: inventory_hostname in groups['jenkins-kloudville']
+  tags: stop
+
+- name: Stop Jenkins Build Node Qeema
+  command: cd /opt/cicd/compose && docker-compose -f docker-compose_qeema-1.yml stop
+  when: inventory_hostname in groups['jenkins-qeema']
+  tags: stop
+ 

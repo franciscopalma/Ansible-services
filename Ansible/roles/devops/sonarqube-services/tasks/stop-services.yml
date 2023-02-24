@@ -1,0 +1,4 @@
+- name: Stop SonarQube Server
+  command: cd /opt/cicd/compose && docker-compose -f docker-compose_sonarqube.yml stop
+  when: inventory_hostname in groups['sonarqube-hosts']
+  tags: stop

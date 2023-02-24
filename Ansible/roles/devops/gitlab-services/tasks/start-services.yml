@@ -1,0 +1,13 @@
+- name: Start Gitlab Node1 
+  command: sudo gitlab-ctl start
+  when: inventory_hostname in groups['gitlab-node1-hosts']
+  tags: startnode1
+
+- name: Start Gitlab Node2 
+  command: sudo gitlab-ctl start
+  when: inventory_hostname in groups['gitlab-node2-hosts']
+  tags: startnode2
+
+
+
+

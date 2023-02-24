@@ -1,0 +1,4 @@
+- name: Stop Nexus Repository
+  command: cd /opt/cicd/compose && docker-compose -f docker-compose_nexus.yml stop
+  when: inventory_hostname in groups['nexus-hosts']
+  tags: stop
